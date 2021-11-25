@@ -13,26 +13,53 @@ namespace Task8._1
         //Затем программно откройте созданный файл, рассчитайте сумму чисел в нем, ответ выведите на консоль
         static void Main(string[] args)
         {
-
-            Random random = new Random();
             string path = @"C:\Users\Ксюша\Desktop\Автоматизация BIM-проектирования\ЗАДАНИЕ 8. РАБОТА С ФАЙЛОВОЙ СИСТЕМОЙ/Logs.txt";
-            int S = 0;
+
+            Random random = new Random();         
             if (!File.Exists(path))
             {
                 File.Create(path);
             }
-            using (StreamWriter sw = new StreamWriter(path, true))
+            using (StreamWriter sw = new StreamWriter(path, false))
             {
                 int[] array = new int[10];
                 for (int i = 0; i < 10; i++)
                 {
                     array[i] = random.Next(0, 10);
                     sw.Write("{0} ", array[i]);
-                    S += array[i];
                 }
-                Console.WriteLine("{0}", S);
             }
-            Console.ReadKey();
+            //using (FileStream fs = File.OpenRead(path))
+            //{
+            //    byte[] b = new byte[1024];
+            //    UTF8Encoding temp = new UTF8Encoding(true);
+
+            //    while (fs.Read(b, 0, b.Length) > 0)
+            //    {
+            //        Console.WriteLine(temp.GetString(b));
+            //    }
+            //}
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string console = sr.ReadLine();
+
+            }
+                //int S = 0;
+                //S += array[i];
+                //Console.Write("{0}", S);
+                //
+                //{
+                //    
+                //    
+                //    //int[] sumArray=new
+                //    //
+                //    //
+
+                //}
+
+
+
+                Console.ReadKey();
         }
     }
 }
