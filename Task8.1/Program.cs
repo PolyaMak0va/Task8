@@ -15,7 +15,7 @@ namespace Task8._1
         {
             string path = @"C:\Users\Ксюша\Desktop\Автоматизация BIM-проектирования\ЗАДАНИЕ 8. РАБОТА С ФАЙЛОВОЙ СИСТЕМОЙ/Logs.txt";
 
-            Random random = new Random();         
+            Random random = new Random();
             if (!File.Exists(path))
             {
                 File.Create(path);
@@ -29,37 +29,31 @@ namespace Task8._1
                     sw.Write("{0} ", array[i]);
                 }
             }
-            //using (FileStream fs = File.OpenRead(path))
-            //{
-            //    byte[] b = new byte[1024];
-            //    UTF8Encoding temp = new UTF8Encoding(true);
+            string[] lines = File.ReadAllLines(path);
+            Console.WriteLine("Содержание текстового документа.txt = ");
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
+            Console.WriteLine("Нажмите любую кнопку для выхода.");
 
-            //    while (fs.Read(b, 0, b.Length) > 0)
-            //    {
-            //        Console.WriteLine(temp.GetString(b));
-            //    }
-            //}
+            int S = 0;
+            int N = 0;
             using (StreamReader sr = new StreamReader(path))
             {
-                string console = sr.ReadLine();
-
-            }
-                //int S = 0;
-                //S += array[i];
-                //Console.Write("{0}", S);
-                //
+                Console.WriteLine(sr.ReadToEnd());
+                N = int.Parse(sr.ReadToEnd());
+                //int[] arraySum = new int[lines.Length];
+                //while ((lines = sr.ReadLine()) != null)
+                //    foreach (int l in arraySum)
                 //{
-                //    
-                //    
-                //    //int[] sumArray=new
-                //    //
-                //    //
-
-                //}
-
-
-
-                Console.ReadKey();
+                //    S += int.TryParse(l);
+                //    S += l;
+                //}          
+            }
+            S += N;
+            Console.WriteLine(S);
+            Console.ReadKey();
         }
     }
 }
